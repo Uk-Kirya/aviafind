@@ -1,0 +1,66 @@
+<footer class="mt-auto">
+    <div class="container p-3 mt-2 mb-2">
+        <div class="row">
+            <div class="col-lg-6 text-center text-lg-start order-2 order-lg-1 mt-2 mt-lg-0">
+                © {{ year }} AviaFind
+            </div>
+            <div class="col-lg-6 text-center text-lg-end order-1 order-lg-2">
+                <a href="{{ url_for('policy') }}">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% if not agreed %}
+    <div id="policyAlert">
+        <div>
+            Мы используем печеньки 🍪 (cookies), чтобы сделать ваш визит вкуснее и удобнее. Продолжая пользоваться сайтом — вы соглашаетесь на <a href="{{ url_for('policy') }}"><b>это</b></a>.
+        </div>
+        <button type="button" onclick="agreeToPolicy()">Окей!</button>
+    </div>
+    <script>
+        function agreeToPolicy() {
+            fetch('/agreed-to-policy', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    document.getElementById('policyAlert').style.display = 'none';
+                }
+            });
+        }
+    </script>
+{% endif %}
+
+{% if flash %}
+    <div class="mt-3 alert alert-{{ flash.category }} text-start flash__alert">
+        <ul>
+            {% for message in flash.messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ищем контейнер flash-сообщений
+        const flashContainers = document.querySelectorAll('.alert');
+
+        flashContainers.forEach(function(container) {
+            setTimeout(function() {
+                // Плавное исчезновение
+                container.style.transition = 'opacity 0.5s ease';
+                container.style.opacity = '0';
+
+                // Удаление после анимации
+                setTimeout(function() {
+                    const parentCol = container.closest('.col-12');
+                    if (parentCol && parentCol.parentElement) {
+                        parentCol.remove();
+                    }
+                }, 500);
+
+            }, 3000);
+        });
+    });
+</script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="{{ url_for('static', path='fav.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', path='client/css/style.css' )}}?v=1">
+
+    <style>
+        .page-loader {
+            align-items: center;
+            background: #0a53be;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            margin: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 999 !important;
+        }
+        .filter {
+            position: absolute;
+            visibility: hidden;
+        }
+        .dots {
+            filter: url(#gooeyness);
+            padding: 30px;
+        }
+        .dot {
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 20px;
+            width: 32px;
+            height: 32px;
+        }
+        .dot:first-child {
+            animation: FirstDot 3s infinite;
+        }
+        .dot:nth-child(2) {
+            animation: SecondDot 3s infinite;
+        }
+        .dot:nth-child(3) {
+            animation: ThirdDot 3s infinite;
+        }
+        .dot:nth-child(4) {
+            animation: FourthDot 3s infinite;
+        }
+        .dot:nth-child(5) {
+            animation: FifthDot 3s infinite;
+        }
+
+        @keyframes FirstDot {
+          0% {
+            transform: scale(1) translateX(0);
+          }
+          25% {
+            transform: scale(2.5) translateX(0);
+          }
+          50% {
+            transform: scale(1) translateX(0);
+          }
+          83% {
+            transform: scale(1) translateX(240px);
+          }
+          100% {
+            transform: scale(1) translateX(0);
+          }
+        }
+
+        @keyframes SecondDot {
+          0% {
+            transform: translateX(0px);
+          }
+          27% {
+            transform: translateX(-40px);
+          }
+          50% {
+            transform: translateX(0px);
+          }
+          81% {
+            transform: translateX(180px);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes ThirdDot {
+          0% {
+            transform: translateX(0px);
+          }
+          29% {
+            transform: translateX(-100px);
+          }
+          50% {
+            transform: translateX(0px);
+          }
+          79% {
+            transform: translateX(120px);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes FourthDot {
+          0% {
+            transform: translateX(0px);
+          }
+          31% {
+            transform: translateX(-160px);
+          }
+          50% {
+            transform: translateX(0px);
+          }
+          77% {
+            transform: translateX(60px);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes FifthDot {
+          0% {
+            transform: scale(1) translateX(0);
+          }
+          33% {
+            transform: scale(1) translateX(-220px);
+          }
+          50% {
+            transform: scale(1) translateX(0);
+          }
+          75% {
+            transform: scale(2.5) translateX(0);
+          }
+          100% {
+            transform: scale(1) translateX(0);
+          }
+        }
+
+    </style>
+</head>
+
+<body class="d-flex flex-column vh-100">
+
+    <div class="page-loader">
+        <svg class="filter" version="1.1">
+            <defs>
+                <filter id="gooeyness">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="gooeyness" />
+                    <feComposite in="SourceGraphic" in2="gooeyness" operator="atop" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="dots">
+            <div class="dot mainDot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    {% include 'client/includes/header.html' %}
+    {% block content %}{% endblock %}
+    {% include 'client/includes/footer.html' %}
+    {% include 'client/includes/modals.html' %}
+    {% include 'client/includes/scripts.html' %}
+
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelector(".page-loader").style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>
