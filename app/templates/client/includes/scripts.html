@@ -14,3 +14,17 @@
 <script src="{{ url_for('static', path='client/js/scripts.js') }}"></script>
 <script src="{{ url_for('static', path='client/js/gsap.js') }}"></script>
 <script src="{{ url_for('static', path='client/js/aos.js') }}"></script>
+
+
+<script>
+    const toggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.documentElement.dataset.theme = savedTheme;
+    toggle.dataset.theme = savedTheme;
+    toggle.addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        toggle.dataset.theme = next;
+        localStorage.setItem("theme", next);
+    });
+</script>

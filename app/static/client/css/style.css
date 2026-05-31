@@ -29,7 +29,7 @@
 }
 
 body {
-    background-color: var(--bg) !important;
+    background-color: var(--sidebar) !important;
     font-family: 'Regular', sans-serif !important;
     color: var(--text) !important;
 }
@@ -93,6 +93,10 @@ strong {
     font-family: 'Bold', sans-serif !important;
 }
 
+h2 {
+    font-size: 1.2rem !important;
+}
+
 a,
 button {
     text-decoration: none !important;
@@ -140,7 +144,7 @@ footer {
 .theme-toggle {
     width: 3rem;
     height: 3rem;
-    background-color: var(--line);
+    background-color: var(--bg);
     border-radius: 1.2rem;
     border: none;
     display: inline-flex;
@@ -157,12 +161,22 @@ footer {
     display: none;
 }
 
+.logo_dark img,
+.logo_light img {
+    width: 220px;
+}
+
+html[data-theme="light"] .logo_dark,
+html[data-theme="dark"] .logo_light {
+    display: none;
+}
+
 .card__1 {
     padding: 2rem;
     border-radius: 1.2rem;
     height: 100%;
-    background-color: var(--panel-soft);
-    border: 1px solid var(--line);
+    background-color: var(--workspace);
+    font-size: 3rem;
 }
 
 .card__1 h3 {
@@ -231,6 +245,19 @@ footer {
     font-size: .75rem;
 }
 
+#tpwl-search,
+#tpwl-tickets,
+#tpwl-modals {
+  forced-color-adjust: none !important;
+  color-scheme: light !important;
+}
+
+#tpwl-search {
+    background-color: #eef1f7;
+    padding: 2rem;
+    border-radius: 1.5rem;
+}
+
 @media (min-width: 1440px) {
 
     .container,
@@ -261,5 +288,10 @@ footer {
 
     #policyAlert button {
         width: 100%;
+    }
+
+    #tpwl-search {
+        padding: 1rem;
+        border-radius: 1.2rem;
     }
 }

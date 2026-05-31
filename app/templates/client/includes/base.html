@@ -4,18 +4,18 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="{{ url_for('static', path='fav.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ url_for('static', path='client/img/fav.png') }}" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', path='client/css/style.css' )}}?v=1">
 
-    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-      (function () {
+    <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+        (function () {
             var script = document.createElement("script");
             script.async = 1;
             script.type = "module";
             script.src = "https://tpwgt.com/wl_web/main.js?wl_id=18159";
             document.head.appendChild(script);
-          })();
+        })();
     </script>
 
     <style>
@@ -168,7 +168,7 @@
     </style>
 </head>
 
-<body class="d-flex flex-column vh-100">
+<body class="d-flex flex-column justify-content-between vh-100">
 
     <div class="page-loader">
         <svg class="filter" version="1.1">
@@ -190,7 +190,11 @@
     </div>
 
     {% include 'client/includes/header.html' %}
-    {% block content %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
     {% include 'client/includes/footer.html' %}
     {% include 'client/includes/modals.html' %}
     {% include 'client/includes/scripts.html' %}

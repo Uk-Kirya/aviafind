@@ -3,7 +3,12 @@
         <div class="row align-items-center">
             <div class="col">
                 <a href="{{ url_for('home') }}">
-                    <h3 class="m-0">AviaFind</h3>
+                    <picture class="logo_light">
+                        <img src="{{ url_for('static', path='client/img/logo_light.svg') }}" alt="">
+                    </picture>
+                    <picture class="logo_dark">
+                        <img src="{{ url_for('static', path='client/img/logo_dark.svg') }}" alt="">
+                    </picture>
                 </a>
             </div>
             <div class="col text-end">
@@ -27,16 +32,3 @@
         </div>
     </div>
 </header>
-
-<script>
-    const toggle = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    document.documentElement.dataset.theme = savedTheme;
-    toggle.dataset.theme = savedTheme;
-    toggle.addEventListener("click", () => {
-        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-        document.documentElement.dataset.theme = next;
-        toggle.dataset.theme = next;
-        localStorage.setItem("theme", next);
-    });
-</script>
