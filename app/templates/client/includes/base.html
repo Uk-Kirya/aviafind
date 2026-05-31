@@ -8,10 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', path='client/css/style.css' )}}?v=1">
 
+    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+      (function () {
+            var script = document.createElement("script");
+            script.async = 1;
+            script.type = "module";
+            script.src = "https://tpwgt.com/wl_web/main.js?wl_id=18159";
+            document.head.appendChild(script);
+          })();
+    </script>
+
     <style>
+        :root {
+            color-scheme: dark;
+            --bg: #18191f;
+            --primary: #5b55ff;
+        }
+
+        :root[data-theme="light"] {
+            color-scheme: light;
+            --bg: #eef1f7;
+            --primary: #4f46e5;
+        }
         .page-loader {
             align-items: center;
-            background: #0a53be;
+            background: var(--bg);
             display: flex;
             height: 100vh;
             justify-content: center;
@@ -31,7 +52,7 @@
             padding: 30px;
         }
         .dot {
-            background: white;
+            background: var(--primary);
             border-radius: 50%;
             display: inline-block;
             margin-right: 20px;
