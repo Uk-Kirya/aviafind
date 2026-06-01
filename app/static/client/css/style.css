@@ -172,20 +172,23 @@ html[data-theme="dark"] .logo_light {
 }
 
 .card__1 {
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 1.2rem;
     height: 100%;
     background-color: var(--panel-soft);
-    font-size: 3rem;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .card__1 h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .card__1 p {
-    font-size: .9rem;
-    margin: 1rem 0 0 0;
+    font-size: .8rem;
+    margin: 0;
     color: var(--muted);
 }
 
@@ -293,5 +296,19 @@ html[data-theme="dark"] .logo_light {
     #tpwl-search {
         padding: 1rem;
         border-radius: 1.2rem;
+    }
+
+    .card__1 {
+        padding: 1rem;
+        font-size: 1.5rem;
+        gap: 0;
+    }
+
+    .card__1 h3 {
+        font-size: .75rem !important;
+    }
+
+    .card__1 p {
+        font-size: .65rem !important;
     }
 }
